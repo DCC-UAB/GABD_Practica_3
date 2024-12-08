@@ -1,0 +1,88 @@
+--------------------------------------------------------
+--  File created - divendres-de setembre-20-2019   
+--------------------------------------------------------
+DROP TABLE "DATASET" cascade constraints;
+DROP TABLE "SAMPLES" cascade constraints;
+--------------------------------------------------------
+--  DDL for Table DATASET
+--------------------------------------------------------
+
+  CREATE TABLE if not exists "DATASET" 
+   ("ID" NUMBER,
+    "NAME" VARCHAR2(40),
+	"FEAT_SIZE" NUMBER,
+	"NUMCLASSES" NUMBER,
+	"INFO" JSON
+   )  ;
+
+--------------------------------------------------------
+--  DDL for Table FEATUREVECTOR
+--------------------------------------------------------
+
+  CREATE TABLE  if not exists "SAMPLES"
+   (	"ID_DATASET" number,
+	"ID" NUMBER, 
+    "FEATURES" Vector,
+	"LABEL" VARCHAR2(16)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+
+--------------------------------------------------------
+--  DDL for Index DATASET_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "DATASET_PK" ON "DATASET" ("ID")
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index SAMPLES_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SAMPLES_PK" ON "SAMPLES" ("ID_DATASET","ID")
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+
+--------------------------------------------------------
+--  Constraints for Table DATASET
+--------------------------------------------------------
+
+  ALTER TABLE "DATASET" ADD CONSTRAINT "DATASET_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  
+  ALTER TABLE "DATASET" ADD CONSTRAINT "DATASET_UK" UNIQUE ("NAME");
+ 
+  ALTER TABLE "DATASET" MODIFY ("NAME" NOT NULL ENABLE);
+
+--------------------------------------------------------
+--  Constraints for Table SAMPLES
+--------------------------------------------------------
+
+  ALTER TABLE "SAMPLES" ADD CONSTRAINT "SAMPLES_PK" PRIMARY KEY  ("ID_DATASET","ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "SAMPLES" MODIFY ("ID_DATASET" NOT NULL ENABLE);
+ 
+  ALTER TABLE "SAMPLES" MODIFY ("ID" NOT NULL ENABLE);
+
+
+--------------------------------------------------------
+--  Ref Constraints for Table SAMPLES
+--------------------------------------------------------
+
+  ALTER TABLE "SAMPLES" ADD CONSTRAINT "SAMPLES_FK" FOREIGN KEY ("ID_DATASET")
+	  REFERENCES "DATASET" ("ID") ON DELETE CASCADE ENABLE;
+
+
