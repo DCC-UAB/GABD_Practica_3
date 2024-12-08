@@ -9,6 +9,7 @@ MongoDB ens permet tenir funcionant més d’un servidor en una mateixa màquina
 -	2 shards. El primer shard, que anomenarem rs0, serà un replica set format per 3 nodes que escoltaran pel port 37017: un al main, un altre al mongo-1 i un altre al mongo-2. El segon shard, que anomenarem rs1, estarà format igualment per un replica set distribuït en les 3 màquines però escoltarà pel port 47017.
 -	El servidor de configuració format per un replica set de 3 nodes: main, mongo-1 i mongo-2. I que escoltarà pel port 57017.
 
+!images/ArquitecturaDistribuida.png
 
 ## Materials i Recursos
 Per fer el lliurament d’aquest part disposeu de les indicacions d’aquest enunciat. A més, necessitareu un client de MongoDB per monitoritzar i configurar la base de dades. Us recomanem fer servir la versió gratuïtat de noSQLBooster  i Compass . Aquesta última és la GUI oficial de MongoDB i permet fer algunes tasques bàsiques amb MongoDB d’una manera molt fàcil i intuïtiva. La versió gratuïtat de noSQLBooster us permetrà fer en un entorn de finestres la totalitat dels exercicis.
