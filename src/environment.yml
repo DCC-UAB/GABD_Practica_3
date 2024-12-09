@@ -1,4 +1,4 @@
-name: GABDPractica2
+name: GABDPractica3
 channels:
   - conda-forge
   - defaults
@@ -7,8 +7,9 @@ dependencies:
   - pip
   - pip:
     - ipykernel
-    - git+https://github.com/Oriolrt/GABDConnect
+    - git+https://github.com/Oriolrt/GABDConnect@developement
     - ucimlrepo
+    - geonames
   - pymongo
   - sshtunnel
   - scikit-learn

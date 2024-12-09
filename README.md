@@ -16,6 +16,9 @@ Per fer el lliurament d’aquest part disposeu de les indicacions d’aquest enu
 
 Com en les pràctiques anteriors, caldrà que disposeu d’un client SSH per connectar-vos a les màquines de les pràctiques. En aquesta pràctica us haureu de connectar a les màquines main, mongo-1 i mongo-2. Totes 3 màquines tenen instal·lat un servidor de MongoDB on us podreu connectar al Shell de MongoDB amb la comanda pròpia: mongo. A més teniu instal·lada la comanda tmux , aquesta comanda permet obrir sessions en la terminal i recuperar-la en una nova sessió. És a dir, us permet entrar i sortir de la màquina main per ssh mantenint el que havia en la sessió anterior.
 
+A més, disposeu dels notebooks de Colab que podeu executar allà o en local amb el servidor de Jupyter que us instal·leu en local. Aquests notebooks els trobareu a:
+- [insertGeonames.ipynb](src/insertGeonames.ipynb). Us permetrà inserir les dades de [Geonames](http://download.geonames.org/export/dump/) a la base de dades.
+- [testUCIMongoDB](src/testUCIMongoDB.ipynb). Forma part de la part opcional de la pràctica. Hareu de carregar les dades de la UCI que heu inserit a la base de dades d'Oracle i haureu de inserir els resultats en una col·lecció a MongoDB.
 
 ## Contacte
 Per resoldre els dubtes i qüestions que pugueu tenir de la pràctica, podeu contactar als professors de l'assignatura:

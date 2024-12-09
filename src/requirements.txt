@@ -1,5 +1,5 @@
 ipykernel
-git+https://github.com/Oriolrt/GABDConnect
+git+https://github.com/Oriolrt/GABDConnect@developement
 pymongo
 sshtunnel
 scikit-learn
